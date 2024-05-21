@@ -18,35 +18,31 @@ export default function Example() {
     // URL = "https://teachablemachine.withgoogle.com/models/m5NSTkzLu/";
     URL = "https://teachablemachine.withgoogle.com/models/vT_9v3576/";
 
-  // const init = async () => {
-  //   const modelURL = URL + "model.json";
-  //   const metadataURL = URL + "metadata.json";
-  //   setLoading(true);
-
-  //   // load the model and metadata
-  //   // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-  //   // or files from your local hard drive
-  //   model = await tmImage.load(modelURL, metadataURL);
-  //   maxPredictions = model.getTotalClasses();
-
-  //   // Convenience function to setup a webcam
-  //   const flip = true; // whether to flip the webcam
-  //   const width = 200;
-  //   const height = 200;
-  //   webcam = new tmImage.Webcam(width, height, flip);
-  //   await webcam.setup(); // request access to the webcam
-  //   setCamera(webcam);
-  //   document.getElementById("webcam-container").appendChild(webcam.canvas);
-  //   setLoading(false);
-  //   setActive(true);
-  //   webcam.play();
-  //   window.requestAnimationFrame(loop);
-  // };
-
   const init = async () => {
-    const res = await fetch("https://aums.aliah.ac.in/home/getmenu");
-    console.log(res);
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    setLoading(true);
+
+    // load the model and metadata
+    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+    // or files from your local hard drive
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    // Convenience function to setup a webcam
+    const flip = true; // whether to flip the webcam
+    const width = 200;
+    const height = 200;
+    webcam = new tmImage.Webcam(width, height, flip);
+    await webcam.setup(); // request access to the webcam
+    setCamera(webcam);
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    setLoading(false);
+    setActive(true);
+    webcam.play();
+    window.requestAnimationFrame(loop);
   };
+
   async function loop() {
     webcam.update(); // update the webcam frame
     await predict();
