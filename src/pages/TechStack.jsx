@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OverLay from "../components/OverLay";
 
+import cvzone from "../assets/cvzone.jpeg";
+import numpy from "../assets/numpy.png";
+import yolo from "../assets/yolo.jpeg";
+
 const Techs = [
   {
     id: 0,
@@ -9,39 +13,47 @@ const Techs = [
     tool: "Frontend",
     img: "https://shethink.in/wp-content/uploads/2021/07/react.js-img.png",
     description:
-      "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
+      "React JS is a popular JavaScript library for building user interfaces, particularly single-page applications. It enables developers to create reusable UI components and manage the state of their applications efficiently.",
   },
   {
     id: 1,
-    name: "Node Js",
+    name: "TensorflowJs",
     tool: "Frontend",
-    img: "https://shethink.in/wp-content/uploads/2021/07/react.js-img.png",
+    img: "https://sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2F74f237af-c2d6-4784-8e7f-6c7ff0d65c01-ectn4b.png&w=3840&q=75",
     description:
-      "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
+      "TensorFlow.js is a JavaScript library for training and deploying machine learning models in the browser and on Node.js. It allows developers to build and run ML models directly in the browser, enabling real-time and interactive machine learning applications.",
   },
   {
     id: 2,
-    name: "Next Js",
-    tool: "Frontend",
-    img: "https://shethink.in/wp-content/uploads/2021/07/react.js-img.png",
+    name: "TailwindCSS",
+    tool: "Frontend - UI",
+    img: "https://smartastudio.b-cdn.net/wp-content/uploads/2024/02/tailwindcss-smartastudio.jpg",
     description:
-      "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
+      "It's a utility-first CSS framework that provides a collection of low-level utility classes for rapid UI development. It allows you to create custom designs without writing custom CSS, promoting a consistent and responsive design approach.",
   },
   {
     id: 3,
-    name: "Next Js",
-    tool: "Frontend",
-    img: "https://shethink.in/wp-content/uploads/2021/07/react.js-img.png",
+    name: "YOLOv5",
+    tool: "Model Training",
+    img: yolo,
     description:
-      "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
+      "NumPy is a fundamental Python library for numerical computing. It provides support for arrays, matrices, and a wide range of mathematical functions. In data collection, NumPy is often used to handle and manipulate large datasets efficiently.",
   },
   {
     id: 4,
-    name: "Next Js",
-    tool: "Frontend",
-    img: "https://shethink.in/wp-content/uploads/2021/07/react.js-img.png",
+    name: "CVZONE",
+    tool: "Data Collection",
+    img: cvzone,
     description:
-      "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
+      "CVZone is a Python library that simplifies computer vision tasks by integrating OpenCV and other utilities. It provides easy-to-use functions for capturing and processing images, making it ideal for data collection. With CVZone, it's easy for image annotation, real-time video analysis, and dataset generation.",
+  },
+  {
+    id: 5,
+    name: "Numpy",
+    tool: "Data Collection",
+    img: numpy,
+    description:
+      "NumPy is a fundamental Python library for numerical computing. It provides support for arrays, matrices, and a wide range of mathematical functions. In data collection, NumPy is often used to handle and manipulate large datasets efficiently.",
   },
 ];
 
@@ -54,7 +66,7 @@ export default function Example() {
       <OverLay />
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Our Technology Stack
+          Technologies Used
         </h2>
       </div>
 
@@ -63,14 +75,14 @@ export default function Example() {
           Techs?.map((tech) => (
             <div
               key={tech.id}
-              className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+              className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-xl"
             >
               <div className="relative mx-4 mt-4 h-48 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
                 <img src={tech.img} className="h-full w-full object-cover" />
               </div>
               <div className="p-6">
                 <div className="mb-2 flex items-center justify-between">
-                  <p className="block font-sans text-base font-medium leading-relaxed text-primary-dark antialiased">
+                  <p className="block font-sans text-lg font-semibold leading-relaxed text-primary-dark antialiased">
                     {tech.name}
                   </p>
                   <p className="block font-sans text-base font-medium leading-relaxed text-primary antialiased">

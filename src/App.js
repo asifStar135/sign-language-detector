@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import TechStack from "./pages/TechStack";
-import Diagnosis from "./pages/Diagnosis";
+import Detection from "./pages/Detection";
 import About from "./pages/About";
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/tech-stack" element={<TechStack />} />
-          <Route path="/diagnosis" element={<Diagnosis />} />
+          <Route path="/detection" element={<Detection />} />
         </Routes>
       </div>
     </div>

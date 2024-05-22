@@ -1,20 +1,21 @@
 import OverLay from "../components/OverLay";
+import asif from "../assets/me2.jpeg";
 
 const people = [
   {
     name: "Md Asif Mondal",
-    role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl: "/mohsin.jpeg",
+    role: "B.Tech CSE204039, ALIAH UNIVERSITY",
+    imageUrl: asif,
   },
   {
     name: "Arish Ahamed",
-    role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl: "/asif.jpeg",
+    role: "B.Tech CSE204040, ALIAH UNIVERSITY",
+    imageUrl: asif,
   },
   {
-    name: "Palash Mondal",
-    role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl: "/alif.jpeg",
+    name: "Palash Sarkar",
+    role: "B.Tech CSE213002, ALIAH UNIVERSITY",
+    imageUrl: asif,
   },
 ];
 
@@ -29,25 +30,28 @@ export default function Example() {
               Who are we ?
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Three of us are final year students of Aliah University, pursuing
-              4-year B.Tech in Computer Science and Engineering major. This is
-              our final year project on Disease Prediction System under the
-              supervision of Prof. Abisekh sir. We have used a Robust Model for
-              prediction scenarios and Developed an attractive UI for
-              interaction with the model.
+              We, a dedicated team of three students developed this application
+              under the expert supervision of{" "}
+              <strong className="text-primary">Dr. Sk Md Obaidullah</strong>
+              This innovative project aims to bridge the communication gap
+              between sign language users and the broader community by utilizing{" "}
+              <strong className="text-primary">
+                advanced machine learning and computer vision techniques.
+              </strong>
+              Our collective skills and determination have driven us to create a
+              system that can accurately detect and translate sign language
+              gestures into text or speech, promoting inclusivity and
+              accessibility. <br />
+              <strong className="text-primary">Thank You !</strong>
             </p>
           </div>
         </div>
       </div>
       <div className="py-16 mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl flex flex-col justify-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Meet our Team
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            We are a team of three final year students. Developed a Disease
-            Prediction System under the guidance of Prof. Abisekh Sir.
-          </p>
         </div>
         <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {people.map((person) => (

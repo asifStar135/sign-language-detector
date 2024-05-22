@@ -15,8 +15,7 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
-const logo =
-  "https://i0.wp.com/www.additudemag.com/wp-content/uploads/2016/11/167_3_Diagnose_Diagnosis_Adult-ADD-Diagnosis_Slideshow_167_doctor-clipboard-diagnosis_ts_488575354.jpg";
+import logo from "../assets/logo.png";
 
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
@@ -32,12 +31,9 @@ export default function Example() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-10">
-      <nav
-        className="flex items-center justify-between p-6 md:px-8"
-        aria-label="Global"
-      >
+      <nav className="flex items-center p-6 md:px-10" aria-label="Global">
         <div className="flex">
-          <img src={logo} className="rounded-full h-8 mr-5" />
+          <img src={logo} className="rounded-full h-16 mr-10" />
         </div>
         <div className="flex md:hidden">
           <button
@@ -52,32 +48,24 @@ export default function Example() {
         <Popover.Group className="hidden md:flex md:gap-x-12">
           <NavLink
             to={"/"}
-            className="text-sm font-normal leading-6 text-gray-900"
+            className="text-xl leading-6 text-primary-dark font-semibold"
           >
             Home
           </NavLink>
 
           <NavLink
             to={"/about"}
-            className="text-sm font-normal leading-6 text-gray-900"
+            className="text-xl leading-6 text-primary-dark font-semibold"
           >
             About us
           </NavLink>
           <NavLink
             to={"/tech-stack"}
-            className="text-sm font-normal leading-6 text-gray-900"
+            className="text-xl leading-6 text-primary-dark font-semibold"
           >
             Tech Stack
           </NavLink>
         </Popover.Group>
-        <div className="hidden md:flex md:flex-1 md:justify-end">
-          <NavLink
-            to="/diagnosis"
-            className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Diagnosis
-          </NavLink>
-        </div>
       </nav>
       <Dialog
         as="div"
@@ -89,7 +77,7 @@ export default function Example() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <NavLink className="-m-1.5 p-1.5">
-              <img className="h-8 rounded-full" src={logo} alt="" />
+              <img className="h-16 rounded-full" src={logo} alt="" />
             </NavLink>
             <button
               type="button"
@@ -120,13 +108,6 @@ export default function Example() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Tech Stack
-                </NavLink>
-
-                <NavLink
-                  to="/diagnosis"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Diagnosis
                 </NavLink>
               </div>
             </div>

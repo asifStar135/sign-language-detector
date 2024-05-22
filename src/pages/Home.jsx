@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import OverLay from "../components/OverLay";
+import timeline from "../assets/timeline.MP4";
 
 const Home = () => {
   return (
@@ -10,22 +11,24 @@ const Home = () => {
       <div className="mx-auto max-w-[45rem] pt-12 pb-20">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Disease Prediction !
+            Sign Language Detection
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Introducing our state-of-the-art Disease Prediction Model powered by
-            cutting-edge machine learning technology. Our platform offers a
-            quick and accurate assessment of your health based on the symptoms
-            you provide. Simply enter your symptoms, and our intelligent system
-            will analyze the data to predict potential diseases or health
-            conditions.
+            Introducing the <strong>Sign Language Detector</strong> that aims to
+            bridge the communication gap between sign language users and
+            non-sign language users. By leveraging advanced machine learning and
+            computer vision techniques, our application can recognize and
+            translate sign language gestures into text or speech in real-time.
+            This project is designed to facilitate seamless communication and
+            promote inclusivity, making interactions smoother and more efficient
+            for everyone involved.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <NavLink
-              to="/diagnosis"
+              to="/detection"
               className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Have a Diagnosis
+              {"Detect Sign Language"}
             </NavLink>
             <NavLink
               to="/about"
@@ -55,7 +58,7 @@ const Home = () => {
           controls={false}
           muted={true}
         >
-          <source src="/timeline.MP4" type="video/mp4" />
+          <source src={timeline} type="video/mp4" />
         </video>
       </div>
     </div>
