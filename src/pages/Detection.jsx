@@ -99,7 +99,6 @@ export default function Detection() {
   // run the webcam image through the image model
   async function predict() {
     count++;
-    console.log(count);
     if (count % 5) return;
     // predict can take in an image, video or canvas html element
     let prediction;
@@ -120,7 +119,6 @@ export default function Detection() {
       speak(newResult);
       count = 0;
     }
-    console.log("New Result ->", newResult);
     setResult(newResult);
   }
 
