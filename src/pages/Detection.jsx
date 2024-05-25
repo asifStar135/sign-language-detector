@@ -1,7 +1,6 @@
 import OverLay from "../components/OverLay";
-import * as tf from "@tensorflow/tfjs";
-import * as tmImage from "@teachablemachine/image";
 import { useState } from "react";
+import TF from "../helper";
 import loader from "../assets/loading.svg";
 import hello from "../assets/hello.png";
 import yes from "../assets/yes.png";
@@ -37,50 +36,39 @@ const signsList = [
   },
 ];
 
-export default function Example() {
+export default function Detection() {
   const [loading, setLoading] = useState(false);
   const [camera, setCamera] = useState(false);
   const [active, setActive] = useState(false);
   const [result, setResult] = useState("");
 
-  let voices = [];
-
-  function loadVoices() {
-    voices = window.speechSynthesis.getVoices();
-    if (voices.length === 0) {
-      console.log("recursion");
-      setTimeout(loadVoices, 1000);
-    } else {
-      console.log("Available voices:", voices);
-    }
-  }
-
   let model,
     webcam,
     maxPredictions,
-    URL = process.env.REACT_APP_MODEL_LOCATION;
+    URL = process.env.REACT_APP_MODEL_LOCATION,
+    app_url = process.env.REACT_APP_URL,
+    count = 0;
 
   const init = async () => {
     setLoading(true);
-    // speak("Asif Mondal You're a developer");
-    // return;
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
-
     // load the model and metadata
-    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+    // Refer to TF.loadFromFiles() in the API to support files from a file picker
     // or files from your local hard drive
-    model = await tmImage.load(modelURL, metadataURL);
+    // model = await TF.load(modelURL, metadataURL);
+    model = await TF.load(
+      app_url + "model/model.json",
+      app_url + "model/metadata.json"
+    );
+    // return;
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
     const flip = true; // whether to flip the webcam
     const width = 550;
     const height = 400;
-    webcam = new tmImage.Webcam(width, height, flip);
+    webcam = new TF.Webcam(width, height, flip);
     await webcam.setup(); // request access to the webcam
     setCamera(webcam);
-    // document.getElementById("webcam-container").innerHTML = webcam.canvas;
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     setLoading(false);
     setActive(true);
@@ -97,67 +85,43 @@ export default function Example() {
   }
 
   const speak = (text) => {
-    // console.log(text);
-    // Check if the browser supports the Web Speech API
+    if (!active) return;
     if ("speechSynthesis" in window) {
-      // Check and log available voices
-      // const voices = window.speechSynthesis.getVoices();
-      console.log(voices);
-      if (voices.length === 0) {
-        console.error("No speech synthesis voices available.");
-        // return;
-      }
-
       // Create a new SpeechSynthesisUtterance instance
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.voice = voices[0]; // Use the first available voice
       utterance.lang = "en-US"; // Set language to English
-      utterance.onerror = (event) => {
-        console.error("SpeechSynthesisUtterance.onerror", event);
-        console.log("Error occurred in speech synthesis: " + event.error);
-      };
 
       // Speak the text
       window.speechSynthesis.speak(utterance);
-    } else {
-      alert("Your browser does not support the Web Speech API.");
     }
-    // const synth = window.speechSynthesis;
-    // const utterance = new SpeechSynthesisUtterance(text);
-    // // synth.speak(utterance);
-    // window.speechSynthesis.speak(utterance);
   };
 
   // run the webcam image through the image model
   async function predict() {
+    count++;
+    console.log(count);
+    if (count % 5) return;
     // predict can take in an image, video or canvas html element
     let prediction;
     prediction = await model.predict(webcam.canvas);
-    console.log(prediction);
     prediction.sort((a, b) => {
       return b.probability - a.probability;
     });
 
-    // setResult(prediction[0].className);
     // Threshold for detecting "No Hand"
     const threshold = 0.7;
-    // if (prediction[0].probability < threshold) {
-    //   setResult("No Hand");
-    // } else {
-    //   setResult(prediction[0].className);
-    // }
 
     const newResult =
       prediction[0].probability < threshold
         ? "No Hand"
         : prediction[0].className;
 
-    console.log(newResult);
-
-    if (newResult !== result) {
-      setResult(newResult);
+    if (count == 20) {
       speak(newResult);
+      count = 0;
     }
+    console.log("New Result ->", newResult);
+    setResult(newResult);
   }
 
   const stopCam = () => {
@@ -170,9 +134,9 @@ export default function Example() {
     <div className="mb-20">
       <OverLay />
       <div
-        className={`flex flex-col md:flex-row ${
+        className={`flex flex-col lg:flex-row ${
           active ? "mt-12 md:mt-20 " : "mt-25 md:mt-28 "
-        } items-center justify-around mx-auto`}
+        } items-center justify-around mx-auto px-20`}
       >
         <div className="border-2 border-primary rounded-lg p-10 m-8 flex flex-col items-center justify-around w-[20rem] md:w-[40rem]">
           {loading && <img src={loader} />}
