@@ -1,0 +1,11 @@
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "2.4.7",
+  "packageVersion": "0.8.4-alpha2",
+  "packageName": "@teachablemachine/image",
+  "timeStamp": "2024-05-19T07:06:27.179Z",
+  "userMetadata": {},
+  "modelName": "tm-my-image-model",
+  "labels": ["Call", "Hello", "No ", "Okay", "Thank You", "Yes"],
+  "imageSize": 224
+}
