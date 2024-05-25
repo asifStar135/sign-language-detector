@@ -1,5 +1,7 @@
 import OverLay from "../components/OverLay";
 import asif from "../assets/me2.jpeg";
+import arish from "../assets/arish.jpeg";
+import palash from "../assets/palash.jpeg";
 
 const people = [
   {
@@ -8,14 +10,14 @@ const people = [
     imageUrl: asif,
   },
   {
-    name: "Arish Ahamed",
+    name: "Arish Ahmed",
     role: "B.Tech CSE204040, ALIAH UNIVERSITY",
-    imageUrl: asif,
+    imageUrl: arish,
   },
   {
     name: "Palash Sarkar",
     role: "B.Tech CSE213002, ALIAH UNIVERSITY",
-    imageUrl: asif,
+    imageUrl: palash,
   },
 ];
 
@@ -32,11 +34,11 @@ export default function Example() {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               We, a dedicated team of three students developed this application
               under the expert supervision of{" "}
-              <strong className="text-primary">Dr. Sk Md Obaidullah</strong>
+              <strong className="text-primary">Dr. Sk Md Obaidullah. </strong>
               This innovative project aims to bridge the communication gap
               between sign language users and the broader community by utilizing{" "}
               <strong className="text-primary">
-                advanced machine learning and computer vision techniques.
+                advanced machine learning and computer vision techniques.{" "}
               </strong>
               Our collective skills and determination have driven us to create a
               system that can accurately detect and translate sign language

@@ -31,10 +31,16 @@ export default function Example() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-10">
-      <nav className="flex items-center p-6 md:px-10" aria-label="Global">
-        <div className="flex">
-          <img src={logo} className="rounded-full h-16 mr-10" />
-        </div>
+      <nav
+        className="flex items-center justify-between p-6 md:px-10"
+        aria-label="Global"
+      >
+        <NavLink to="/" className="flex items-center">
+          <img src={logo} className="rounded-full h-16 mr-4" />
+          <h1 className="text-lg md:text-3xl font-semibold text-primary-dark">
+            Sign Language Detector
+          </h1>
+        </NavLink>
         <div className="flex md:hidden">
           <button
             type="button"

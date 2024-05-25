@@ -32,10 +32,9 @@ const Home = () => {
             </NavLink>
             <NavLink
               to="/about"
-              className="flex items-center text-sm font-semibold text-gray-900 border rounded-lg border-gray-300 py-2.5 px-5"
+              className="flex items-center text-sm font-semibold text-gray-900 rounded-lg border-gray-300 py-2.5 px-5 hover:text-primary hover:border-primary border-2 transition-all"
             >
-              Learn more{" "}
-              <ArrowRightIcon className="text-gray-600 ml-3 h-5 w-5" />
+              Learn more <ArrowRightIcon className="ml-3 h-5 w-5" />
             </NavLink>
           </div>
         </div>
