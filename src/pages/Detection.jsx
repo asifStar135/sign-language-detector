@@ -1,5 +1,5 @@
 import OverLay from "../components/OverLay";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TF from "../helper";
 import loader from "../assets/loading.svg";
 import hello from "../assets/hello.png";
@@ -8,6 +8,9 @@ import no from "../assets/no.png";
 import thanku from "../assets/thanku.png";
 import okay from "../assets/okay.jpg";
 import call from "../assets/call.png";
+const voiceLink =
+  "https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg";
+const muteLink = "https://static.thenounproject.com/png/2619102-200.png";
 
 const signsList = [
   {
@@ -39,7 +42,10 @@ const signsList = [
 export default function Detection() {
   const [loading, setLoading] = useState(false);
   const [camera, setCamera] = useState(false);
-  const [active, setActive] = useState(false);
+  const [activeState, setActive] = useState(false);
+  const active = useRef(false);
+  const isVoice = useRef(true);
+  const [voice, setVoice] = useState(true);
   const [result, setResult] = useState("");
 
   let model,
@@ -72,11 +78,13 @@ export default function Detection() {
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     setLoading(false);
     setActive(true);
+    active.current = true;
     webcam.play();
     window.requestAnimationFrame(loop);
   };
 
   async function loop() {
+    if (active.current == false) return;
     webcam.update(); // update the webcam frame
     await predict();
     setTimeout(() => {
@@ -85,14 +93,35 @@ export default function Detection() {
   }
 
   const speak = (text) => {
-    if (!active) return;
+    console.log("Speak ->>", text);
+
     if ("speechSynthesis" in window) {
+      if (window.speechSynthesis.speaking) {
+        console.log("Speech synthesis is already speaking.");
+        return;
+      }
+
       // Create a new SpeechSynthesisUtterance instance
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-US"; // Set language to English
 
       // Speak the text
       window.speechSynthesis.speak(utterance);
+
+      // Optional: Add event listeners for speech events
+      utterance.onstart = () => {
+        console.log("Speech started.");
+      };
+
+      utterance.onend = () => {
+        console.log("Speech finished.");
+      };
+
+      utterance.onerror = (event) => {
+        console.error("Speech synthesis error:", event.error);
+      };
+    } else {
+      console.error("Speech synthesis is not supported in this browser.");
     }
   };
 
@@ -116,7 +145,7 @@ export default function Detection() {
         : prediction[0].className;
 
     if (count == 20) {
-      speak(newResult);
+      isVoice.current && speak(newResult);
       count = 0;
     }
     setResult(newResult);
@@ -124,6 +153,7 @@ export default function Detection() {
 
   const stopCam = () => {
     setActive(false);
+    active.current = false;
     document.getElementById("webcam-container").innerHTML = "";
     camera?.stop();
   };
@@ -138,7 +168,7 @@ export default function Detection() {
       >
         <div className="border-2 border-primary rounded-lg p-10 m-8 flex flex-col items-center justify-around w-[20rem] md:w-[40rem]">
           {loading && <img src={loader} />}
-          {!active && (
+          {activeState == false && (
             <div className="flex flex-col items-center">
               <h2 className="text-xl font-semibold">
                 Start the Camera to Detect
@@ -152,12 +182,28 @@ export default function Detection() {
               </button>
             </div>
           )}
-          <div id="webcam-container" className={!active && "hidden"}></div>
+          <div
+            id="webcam-container"
+            className={activeState == false && "hidden"}
+          ></div>
         </div>
-        {active ? (
-          <div className="flex flex-col items-center w-1/3">
-            <p className="p-5 rounded-lg m-6 text-2xl flex flex-col items-center">
-              <span className="text-xl text-primary">Detected Label : </span>
+        {activeState ? (
+          <div className="flex flex-col items-center w-1/3 mb-20">
+            <div
+              onClick={() => {
+                isVoice.current = !isVoice.current;
+                setVoice(!voice);
+              }}
+              className={
+                "flex items-center justify-between mb-10 w-44 px-3 py-2 rounded-full cursor-pointer border-2 border-primary " +
+                (voice && "bg-primary")
+              }
+            >
+              <p className="text-gray-800 text-lg font-semibold">Speak aloud</p>
+              <img src={voice ? voiceLink : muteLink} className="h-8" />
+            </div>
+            <span className="text-xl text-primary">Detected Label : </span>
+            <p className="p-5 rounded-lg m-3 font-semibold text-gray-800 text-2xl flex flex-col items-center">
               {result}
             </p>
             <button
@@ -172,7 +218,7 @@ export default function Detection() {
           <Signs />
         )}
       </div>
-      {active && <Signs />}
+      {activeState && <Signs />}
     </div>
   );
 }
