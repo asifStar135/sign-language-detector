@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import OverLay from "../components/OverLay";
 
 import cvzone from "../assets/cvzone.jpeg";
-import numpy from "../assets/numpy.png";
+import opencv from "../assets/opencv.jpg";
 import yolo from "../assets/yolo.jpeg";
 
 const Techs = [
@@ -37,7 +37,7 @@ const Techs = [
     tool: "Model Training",
     img: yolo,
     description:
-      "NumPy is a fundamental Python library for numerical computing. It provides support for arrays, matrices, and a wide range of mathematical functions. In data collection, NumPy is often used to handle and manipulate large datasets efficiently.",
+      "YOLO (You Only Look Once) is a state-of-the-art, real-time object detection system known for its speed and accuracy. Unlike traditional detection systems that apply the model to an image at multiple locations and scales, YOLO predicts bounding boxes and class probabilities directly from full images in a single evaluation.",
   },
   {
     id: 4,
@@ -49,18 +49,15 @@ const Techs = [
   },
   {
     id: 5,
-    name: "Numpy",
-    tool: "Data Collection",
-    img: numpy,
+    name: "CV2 - OpenCV",
+    tool: "Image Processing",
+    img: opencv,
     description:
-      "NumPy is a fundamental Python library for numerical computing. It provides support for arrays, matrices, and a wide range of mathematical functions. In data collection, NumPy is often used to handle and manipulate large datasets efficiently.",
+      "OpenCV (Open Source Computer Vision Library) is an open-source library for computer vision and image processing tasks. It includes a wide range of optimized algorithms for tasks such as filtering, color space conversion, motion detection, tracking, and object detection.",
   },
 ];
 
 export default function Example() {
-  const [name, setName] = useState(null);
-  const navigate = useNavigate();
-
   return (
     <div className="isolate bg-white px-6 py-12 lg:px-8">
       <OverLay />
@@ -86,10 +83,10 @@ export default function Example() {
                     {tech.name}
                   </p>
                   <p className="block font-sans text-base font-medium leading-relaxed text-primary antialiased">
-                    {tech.tool}
+                    {">> " + tech.tool}
                   </p>
                 </div>
-                <p className="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
+                <p className="block font-sans text-justify text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
                   {tech.description}
                 </p>
               </div>

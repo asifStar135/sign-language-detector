@@ -62,16 +62,20 @@ export default function Detection() {
     // or files from your local hard drive
     // model = await TF.load(modelURL, metadataURL);
     model = await TF.load(
-      app_url + "model/model.json",
-      app_url + "model/metadata.json"
+      app_url + "model2/model.json",
+      app_url + "model2/metadata.json"
     );
     // return;
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
     const flip = true; // whether to flip the webcam
-    const width = 550;
-    const height = 400;
+    let width = 550;
+    let height = 400;
+    if (window.innerWidth < 765) width = 300;
+    console.log(window.innerHeight);
+    console.log(window.innerWidth);
+    // return;
     webcam = new TF.Webcam(width, height, flip);
     await webcam.setup(); // request access to the webcam
     setCamera(webcam);
@@ -93,11 +97,8 @@ export default function Detection() {
   }
 
   const speak = (text) => {
-    console.log("Speak ->>", text);
-
     if ("speechSynthesis" in window) {
       if (window.speechSynthesis.speaking) {
-        console.log("Speech synthesis is already speaking.");
         return;
       }
 
@@ -107,15 +108,6 @@ export default function Detection() {
 
       // Speak the text
       window.speechSynthesis.speak(utterance);
-
-      // Optional: Add event listeners for speech events
-      utterance.onstart = () => {
-        console.log("Speech started.");
-      };
-
-      utterance.onend = () => {
-        console.log("Speech finished.");
-      };
 
       utterance.onerror = (event) => {
         console.error("Speech synthesis error:", event.error);
@@ -164,9 +156,9 @@ export default function Detection() {
       <div
         className={`flex flex-col lg:flex-row ${
           active ? "mt-12 md:mt-20 " : "mt-25 md:mt-28 "
-        } items-center justify-around mx-auto px-20`}
+        } items-center justify-between mx-auto px-10 md:px-20`}
       >
-        <div className="border-2 border-primary rounded-lg p-10 m-8 flex flex-col items-center justify-around w-[20rem] md:w-[40rem]">
+        <div className="border-2 border-primary rounded-lg p-6 md:p-10 m-8 flex flex-col items-center justify-around w-[20rem] md:w-[40rem]">
           {loading && <img src={loader} />}
           {activeState == false && (
             <div className="flex flex-col items-center">
@@ -188,7 +180,7 @@ export default function Detection() {
           ></div>
         </div>
         {activeState ? (
-          <div className="flex flex-col items-center w-1/3 mb-20">
+          <div className="flex flex-col items-center md:w-1/3 w-11/12 mb-20">
             <div
               onClick={() => {
                 isVoice.current = !isVoice.current;
@@ -209,7 +201,7 @@ export default function Detection() {
             <button
               onClick={() => stopCam()}
               disabled={loading}
-              className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-primary px-10 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Stop
             </button>
@@ -225,16 +217,16 @@ export default function Detection() {
 
 const Signs = () => {
   return (
-    <div className="p-5 px-10 border-t-2 border-b-2 rounded-lg border-primary">
+    <div className="p-5 border-t-2 border-b-2 rounded-lg border-primary">
       <div>
-        <h2 className="text-3xl text-center mb-5 text-gray-800 font-semibold">
+        <h2 className="text-xl md:text-3xl text-center mb-5 text-gray-800 font-semibold">
           Recognisable Hand Gestures
         </h2>
       </div>
       <div className="flex flex-wrap gap-10 justify-around">
         {signsList?.map((item) => (
           <div className="border-l-2 border-primary-dark pl-2">
-            <img src={item?.image} className="h-36" />
+            <img src={item?.image} className="h-16 md:h-36" />
             <h3 className="text-lg text-primary-dark text-center">
               {item?.label}
             </h3>
