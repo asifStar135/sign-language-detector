@@ -57,9 +57,6 @@ export default function Detection() {
 
   const init = async () => {
     setLoading(true);
-    // load the model and metadata
-    // Refer to TF.loadFromFiles() in the API to support files from a file picker
-    // or files from your local hard drive
     // model = await TF.load(modelURL, metadataURL);
     model = await TF.load(
       app_url + "model2/model.json",
@@ -137,7 +134,7 @@ export default function Detection() {
         : prediction[0].className;
 
     if (count == 20) {
-      isVoice.current && speak(newResult);
+      isVoice.current && newResult != "No Hand" && speak(newResult);
       count = 0;
     }
     setResult(newResult);
