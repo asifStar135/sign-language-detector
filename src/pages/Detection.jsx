@@ -59,8 +59,8 @@ export default function Detection() {
     setLoading(true);
     // model = await TF.load(modelURL, metadataURL);
     model = await TF.load(
-      app_url + "model2/model.json",
-      app_url + "model2/metadata.json"
+      app_url + "model/model.json",
+      app_url + "model/metadata.json"
     );
     // return;
     maxPredictions = model.getTotalClasses();

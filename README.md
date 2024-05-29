@@ -76,7 +76,7 @@ The model was trained using the YOLOv5 algorithm. Here are the steps:
 
 3. **Technologies Used**
    - **YOLOv5**: For training the hand gesture recognition model.
-   - **TensorFlow**.js: For deploying the trained model in the web application.
+   - **TensorFlow.js**: For deploying the trained model in the web application.
    - **ReactJS**: Frontend framework for building the user interface.
    - **react-webcam**: For capturing real-time video from the webcam.
    - **Tailwind CSS**: For styling the web application.
