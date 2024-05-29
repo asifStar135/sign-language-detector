@@ -2,7 +2,7 @@
 
 ## Overview
 
-Sign Language Detection is a real-time hand gesture recognition system designed to bridge the communication gap for the hearing-impaired and non-verbal individuals. This project utilizes advanced machine learning techniques, specifically YOLOv8, to accurately identify and categorize hand gestures performed by users.
+Sign Language Detection is a real-time hand gesture recognition system designed to bridge the communication gap for the hearing-impaired and non-verbal individuals. This project utilizes advanced machine learning techniques, specifically YOLOv5, to accurately identify and categorize hand gestures performed by users.
 
 ## Table of Contents
 
@@ -62,20 +62,20 @@ To set up the project locally, follow these steps:
 
 ## Model Training
 
-The model was trained using the YOLOv8 algorithm. Here are the steps:
+The model was trained using the YOLOv5 algorithm. Here are the steps:
 
 1. **Dataset Collection:**
    - Collected diverse images of hand gestures representing various sign language classes (e.g., "Hello", "Thanks", "Help").
    - Labeled the hand gestures using makesense.ai.
 2. **Training Process:**
 
-   - Cloned the YOLOv8 repository and set up the environment on Google Colab.
+   - Cloned the YOLOv5 repository and set up the environment on Google Colab.
    - Uploaded the training dataset and created a custom configuration file.
    - Trained the model using the train.py script, adjusting parameters for optimal performance.
    - Downloaded the trained model for integration into the application.
 
 3. **Technologies Used**
-   - **YOLOv8**: For training the hand gesture recognition model.
+   - **YOLOv5**: For training the hand gesture recognition model.
    - **TensorFlow**.js: For deploying the trained model in the web application.
    - **ReactJS**: Frontend framework for building the user interface.
    - **react-webcam**: For capturing real-time video from the webcam.
@@ -95,4 +95,4 @@ Contributions are welcome! Please follow these steps to contribute:
 ## Acknowledgements
 
     - Special thanks to my project guide Dr. Sk Md Obaidullah sir for his invaluable support and guidance.
-    - Thanks to the contributors of YOLOv8 and TensorFlow.js for providing excellent tools for machine learning and web development.
+    - Thanks to the contributors of YOLOv5 and TensorFlow.js for providing excellent tools for machine learning and web development.
