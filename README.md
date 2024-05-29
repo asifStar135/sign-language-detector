@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Real Time Sign Language Detection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Sign Language Detection is a real-time hand gesture recognition system designed to bridge the communication gap for the hearing-impaired and non-verbal individuals. This project utilizes advanced machine learning techniques, specifically YOLOv8, to accurately identify and categorize hand gestures performed by users.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Model Training](#model-training)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project aims to create a robust system for real-time sign language recognition. By leveraging deep learning models and sophisticated image processing methods, the system can accurately detect and interpret hand gestures, ensuring reliable communication support in various conditions.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Real-time hand gesture recognition
+- Accurate detection and classification of sign language gestures
+- User-friendly interface with real-time feedback
+- Audio output for detected gestures
+- Robust against different backgrounds and lighting conditions
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To set up the project locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/asifstar135/sign-language-detector.git
+   cd sign-language-detection
+   ```
 
-### `npm run eject`
+2. **Install dependencies:**:
+   ```bash
+   npm install
+   ```
+3. **Run Application:**:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To set up the project locally, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Open your web browser and go to http://localhost:3000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Allow the website to access your webcam.
 
-## Learn More
+3. Perform hand gestures in front of the camera.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. The system will recognize the gesture and display the corresponding sign language word on the screen. Additionally, it
+   will provide an audio output of the detected gesture.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Model Training
 
-### Code Splitting
+The model was trained using the YOLOv8 algorithm. Here are the steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Dataset Collection:**
+   - Collected diverse images of hand gestures representing various sign language classes (e.g., "Hello", "Thanks", "Help").
+   - Labeled the hand gestures using makesense.ai.
+2. **Training Process:**
 
-### Analyzing the Bundle Size
+   - Cloned the YOLOv8 repository and set up the environment on Google Colab.
+   - Uploaded the training dataset and created a custom configuration file.
+   - Trained the model using the train.py script, adjusting parameters for optimal performance.
+   - Downloaded the trained model for integration into the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Technologies Used**
+   - **YOLOv8**: For training the hand gesture recognition model.
+   - **TensorFlow**.js: For deploying the trained model in the web application.
+   - **ReactJS**: Frontend framework for building the user interface.
+   - **react-webcam**: For capturing real-time video from the webcam.
+   - **Tailwind CSS**: For styling the web application.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are welcome! Please follow these steps to contribute:
 
-### Advanced Configuration
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/your-feature-name).
+3. Make your changes.
+4. Commit your changes (git commit -m 'Add some feature').
+5. Push to the branch (git push origin feature/your-feature-name).
+6. Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgements
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    - Special thanks to my project guide Dr. Sk Md Obaidullah sir for his invaluable support and guidance.
+    - Thanks to the contributors of YOLOv8 and TensorFlow.js for providing excellent tools for machine learning and web development.
