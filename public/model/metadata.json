@@ -3,9 +3,9 @@
   "tmVersion": "2.4.7",
   "packageVersion": "0.8.4-alpha2",
   "packageName": "@teachablemachine/image",
-  "timeStamp": "2024-05-19T07:06:27.179Z",
+  "timeStamp": "2024-05-25T11:34:11.026Z",
   "userMetadata": {},
   "modelName": "tm-my-image-model",
-  "labels": ["Call", "Hello", "No ", "Okay", "Thank You", "Yes"],
+  "labels": ["Yes", "No", "Okay", "Hello", "Thank You", "Call"],
   "imageSize": 224
 }

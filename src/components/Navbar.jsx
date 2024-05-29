@@ -51,7 +51,7 @@ export default function Example() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden md:flex md:gap-x-12">
+        <Popover.Group className="hidden md:flex items-center md:gap-x-12">
           <NavLink
             to={"/"}
             className="text-xl leading-6 text-primary-dark font-semibold"
@@ -71,6 +71,24 @@ export default function Example() {
           >
             Tech Stack
           </NavLink>
+          <a
+            className="fork-btn"
+            href="https://github.com/asifstar135/sign-language-detector"
+            target="_blank"
+          >
+            <button
+              target="_blank"
+              className="flex gap-3 items-center bg-primary hover:bg-primary-dark rounded-lg px-3 py-2"
+            >
+              <p className="text-gray-800 hover:-gray-100 text-lg font-semibold">
+                Github
+              </p>
+              <img
+                src="https://cdn.icon-icons.com/icons2/2428/PNG/512/github_black_logo_icon_147128.png"
+                className="w-8"
+              />
+            </button>
+          </a>
         </Popover.Group>
       </nav>
       <Dialog
@@ -115,6 +133,24 @@ export default function Example() {
                 >
                   Tech Stack
                 </NavLink>
+                <a
+                  className="my-5"
+                  href="https://github.com/asifstar135/sign-language-detector"
+                  target="_blank"
+                >
+                  <button
+                    target="_blank"
+                    className="flex gap-3 items-center bg-primary hover:bg-primary-dark rounded-lg px-3 py-2"
+                  >
+                    <p className="text-gray-800 hover:-gray-100 text-lg font-semibold">
+                      Github
+                    </p>
+                    <img
+                      src="https://cdn.icon-icons.com/icons2/2428/PNG/512/github_black_logo_icon_147128.png"
+                      className="w-8"
+                    />
+                  </button>
+                </a>
               </div>
             </div>
           </div>
